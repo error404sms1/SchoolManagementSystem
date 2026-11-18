@@ -1,0 +1,14 @@
+
+### Add a student
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "studentId": "S001",
+  "studentName": "Mohamed",
+  "studentAddress": "Kandy",
+  "birthday": "2006/08/09"
+}
+
+### Get all students
+GET http://localhost:8080/api/students
