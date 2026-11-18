@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142543">
+  <title>School Management System | Dashboard</title>
+  <link rel="stylesheet" href="/styles.css?v=20261117-classic">
+  <script defer src="/app.js?v=20261117-classic"></script>
+</head>
+<body>
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-illustration">
+      <a class="brand brand-on-dark" href="/sms.html" aria-label="School Management System home"><span class="brand-symbol">S<span class="brand-dot">.</span></span><span><strong>School<span class="brand-word">Space</span></strong><small>Management platform</small></span></a>
+      <div class="auth-illustration-content">
+        <span class="kicker dark-kicker"><span class="kicker-line"></span> THE SMARTER WAY TO RUN A SCHOOL</span>
+        <h1>One school.<br>Every detail.<br><em>In one place.</em></h1>
+        <p>Manage admissions, students, teachers and academic work through a clear, secure workspace.</p>
+        <div class="auth-feature"><span class="feature-icon">✓</span><span>Separate administrator and teacher access</span></div>
+        <div class="auth-feature"><span class="feature-icon">✓</span><span>School records organized in one dashboard</span></div>
+      </div>
+      <div class="auth-art" aria-hidden="true"><div class="art-ring art-ring-a"></div><div class="art-ring art-ring-b"></div><div class="art-grid"></div></div>
+      <div class="auth-footer">SCHOOL MANAGEMENT SYSTEM · STAFF ACCESS</div>
+    </div>
+    <div class="auth-form-side">
+      <div class="auth-mobile-brand"><span class="brand-symbol">S.</span><strong>School Management System</strong></div>
+      <div class="login-card">
+        <div class="login-kicker">SECURE STAFF PORTAL</div>
+        <h2 id="auth-title">Welcome back</h2>
+        <p class="login-subtitle" id="auth-subtitle">Sign in to continue to your school workspace.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+          <button type="button" id="login-tab" role="tab" aria-selected="true" class="auth-tab selected">Sign in</button>
+          <button type="button" id="setup-tab" role="tab" aria-selected="false" class="auth-tab">First admin setup</button>
+        </div>
+        <form id="login-form" class="stack-form" autocomplete="on">
+          <label class="field"><span>Username</span><input name="username" autocomplete="username" placeholder="Enter your username" minlength="3" maxlength="80" required></label>
+          <label class="field"><span>Password</span><input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+          <button class="btn btn-primary btn-wide" type="submit" id="login-submit">Sign in <span aria-hidden="true">→</span></button>
+        </form>
+        <form id="setup-form" class="stack-form" hidden>
+          <div class="callout"><strong>One-time setup</strong><p>Only the first administrator can register here. Later, admins create teacher and other administrator accounts.</p></div>
+          <label class="field"><span>Administrator username</span><input name="username" autocomplete="username" placeholder="Choose a username" minlength="3" maxlength="80" required></label>
+          <label class="field"><span>Administrator password</span><input name="password" type="password" autocomplete="new-password" placeholder="At least 12 characters" minlength="12" required></label>
+          <label class="field"><span>Private bootstrap secret</span><input name="setupSecret" type="password" autocomplete="off" placeholder="Secret configured in IntelliJ" required></label>
+          <button class="btn btn-primary btn-wide" type="submit" id="setup-submit">Create administrator account <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+        <div class="auth-trust"><span class="lock-ico" aria-hidden="true">♢</span> Protected by your school's secure login system</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <a class="brand brand-on-dark" href="/sms.html" aria-label="School Management System home">
+          <span class="brand-symbol">SMS</span>
+          <span><strong>School Management</strong><small>Administration &amp; teaching</small></span>
+        </a>
+      </div>
+      <nav id="side-nav" aria-label="Main navigation"></nav>
+      <div class="sidebar-bottom"><span class="sidebar-help-icon" aria-hidden="true">?</span><div><strong>Staff portal</strong><span>Authorized access only</span></div></div>
+    </aside>
+    <div class="main-column">
+      <header class="topbar">
+        <div class="top-left">
+          <button class="icon-button mobile-menu" type="button" id="menu-toggle" aria-label="Open navigation menu">☰</button>
+          <div class="top-page-name">
+            <span class="page-eyebrow" id="page-eyebrow">OVERVIEW</span>
+            <h1 id="page-title">Dashboard</h1>
+            <span id="breadcrumb-current" hidden>Dashboard</span>
+          </div>
+        </div>
+        <div class="top-right">
+          <span id="connection-chip" class="connection-chip"><span class="connection-dot"></span> API connected</span>
+          <div class="page-buttons" id="page-buttons"></div>
+          <span class="role-label" id="role-label">ADMIN</span>
+          <div class="user-avatar" id="user-avatar" aria-hidden="true">A</div>
+          <div class="user-meta"><strong id="user-name">Administrator</strong><small id="user-role">School administrator</small></div>
+          <button type="button" class="btn btn-secondary logout-button" id="logout-button" aria-label="Log out">Log out</button>
+        </div>
+      </header>
+      <main class="app-content" id="main-content">
+        <div class="page-heading">
+          <div><h2 id="content-title">Dashboard</h2><p id="page-subtitle">Use the cards below or the navigation menu to manage your school.</p></div>
+        </div>
+        <div id="notice-area" role="status" aria-live="polite"></div>
+        <section id="dashboard-view" hidden>
+          <div class="dashboard-note">
+            <div>
+              <div class="dashboard-note-label" id="welcome-title">Welcome back.</div>
+              <p id="welcome-caption">Your school records and daily work are available below.</p>
+            </div>
+            <button type="button" class="btn btn-primary" id="dashboard-action">Register a student +</button>
+          </div>
+
+          <div id="metrics-grid" class="metrics-grid" aria-label="School management modules"></div>
+
+          <div class="dashboard-columns">
+            <section class="panel">
+              <div class="panel-heading">
+                <div><h2 id="dashboard-section-title">Students by grade</h2><p>Current student enrollment counts</p></div>
+                <button class="btn btn-text" id="grades-see-all" type="button">View students</button>
+              </div>
+              <div class="panel-body" id="grade-overview"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading"><div><h2 id="dashboard-secondary-title">Quick actions</h2><p>Go directly to your frequent tasks</p></div></div>
+              <div class="quick-list" id="quick-actions"></div>
+            </section>
+          </div>
+          <section class="panel stream-panel" id="stream-panel">
+            <div class="panel-heading"><div><h2>A/L admissions by stream</h2><p>Applicants, available seats and selected students</p></div>
+              <button type="button" class="btn btn-text" id="open-al">Manage A/L admissions</button></div>
+            <div class="stream-grid" id="stream-overview"></div>
+          </section>
+        </section>
+        <section id="module-view" hidden>
+          <div class="module-intro"><div class="module-intro-icon" id="module-intro-icon">▦</div><div><strong id="module-intro-title">Student records</strong><p id="module-intro-description">Choose a task or view your records.</p></div></div>
+          <div class="module-grid"><section class="panel record-panel"><div class="panel-heading panel-heading-record"><div><h2 id="records-heading">Records</h2><p id="records-caption">Data from your school system</p></div><button type="button" class="btn btn-secondary" id="refresh-records"><span aria-hidden="true">↻</span> Refresh</button></div>
+          <div class="data-toolbar"><label class="search-box"><span aria-hidden="true">⌕</span><input id="record-search" placeholder="Search records..." aria-label="Search records"></label><span class="record-count" id="record-count">No records loaded</span></div>
+          <div id="record-content" class="record-content"></div><div class="table-footer" id="table-footer"></div></section>
+          <aside class="panel action-panel"><div class="panel-heading"><div><h2>Actions</h2><p>Choose what you want to do</p></div></div><div class="action-list" id="module-actions"></div><div class="action-help"><strong>Need help?</strong><p>Forms open in a separate window so you can focus on one task at a time.</p></div></aside></div>
+        </section>
+        <footer class="footer-note">School Management System · Secure staff workspace · Data comes from your Spring Boot server</footer>
+      </main>
+    </div>
+    <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+  </div>
+  <dialog id="action-dialog" class="action-dialog"><div class="dialog-header"><div><span class="dialog-eyebrow">SCHOOL MANAGEMENT</span><h2 id="dialog-title">New record</h2><p id="dialog-description">Complete the form below.</p></div><button class="icon-button" id="dialog-close" type="button" aria-label="Close dialog">×</button></div><form id="action-form" class="action-form"><div id="dialog-fields" class="dialog-fields"></div><div class="dialog-footer"><button type="button" class="btn btn-secondary" id="dialog-cancel">Cancel</button><button type="submit" class="btn btn-primary" id="dialog-submit">Save changes →</button></div></form></dialog>
+  <dialog id="details-dialog" class="action-dialog details-dialog"><div class="dialog-header"><div><span class="dialog-eyebrow">RECORD DETAILS</span><h2 id="details-title">Record</h2></div><button class="icon-button" id="details-close" type="button" aria-label="Close details">×</button></div><div id="details-content" class="details-content"></div><div class="dialog-footer"><button type="button" class="btn btn-secondary" id="details-done">Close</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
